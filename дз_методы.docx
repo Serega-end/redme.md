@@ -1,0 +1,170 @@
+### Основы алгоритмизации и программирования
+
+# Грицинин Сергей ИПО - 23.23
+
+## ДЗ методы:
+# Номер 1:
+Ответ: B
+
+# Номер 2:
+Ответ: B
+
+# Номер 3:
+Ответ: B
+
+# Номер 4:
+Ответ: B
+
+# Номер 5:
+Ответ: A
+
+# Номер 6:
+Ответ: A
+
+# Номер 7:
+Ответ: D
+
+# Задача 1:
+
+''
+using System.Collections.Generic;
+
+public class Program
+{
+    public static int SumNumbers(List<int> numbers)
+    {
+        int sum = 0;
+        foreach (var number in numbers)
+        {
+            sum += number;
+        }
+        return sum;
+    }
+    
+    public static void Main()
+    {
+        List<int> list = new List<int>() { 1, 2, 3, 4, 5 };
+        int totalSum = SumNumbers(list);
+        Console.WriteLine($"Сумма чисел в списке: {totalSum}");
+    }
+}
+''
+
+
+
+
+# Задача 2:
+
+''
+using System.Linq;
+
+public class Program
+{
+    public static bool IsPalindrome(string input)
+    {
+        string cleanedInput = new string(input.Where(char.IsLetterOrDigit).Select(c => char.ToLower(c)).ToArray());
+        return cleanedInput.SequenceEqual(cleanedInput.Reverse());
+    }
+    
+    public static void Main()
+    {
+        string testString = "A man a plan a canal Panama";
+        bool isPalin = IsPalindrome(testString);
+        Console.WriteLine(isPalin ? $"Строка '{testString}' является палиндромом." : $"Строка '{testString}' НЕ является палиндромом.");
+    }
+}
+''
+  
+
+
+
+# Задача 3:
+
+''
+public class Program
+{
+    public static long Factorial(int n)
+    {
+        if (n < 0)
+            throw new ArgumentException("Число должно быть неотрицательным.");
+        if (n == 0 || n == 1)
+            return 1;
+        long result = 1;
+        for (int i = 2; i <= n; i++)
+        {
+            result *= i;
+        }
+        return result;
+    }
+    
+    public static void Main()
+    {
+        int number = 5;
+        long factorialResult = Factorial(number);
+        Console.WriteLine($"Факториал числа {number}: {factorialResult}");
+    }
+}
+''
+    
+
+
+
+# Задача 4:
+
+''
+  using System.Collections.Generic;
+
+public class Program
+{
+    public static int FindMax(List<int> numbers)
+    {
+        if (numbers.Count == 0)
+            throw new InvalidOperationException("Список пуст.");
+        int maxValue = numbers[0];
+        foreach (var number in numbers)
+        {
+            if (number > maxValue)
+                maxValue = number;
+        }
+        return maxValue;
+    }
+    
+    public static void Main()
+    {
+        List<int> list = new List<int>() { 3, 1, 4, 1, 5, 9, 2 };
+        int maxNumber = FindMax(list);
+        Console.WriteLine($"Максимальное число в списке: {maxNumber}");
+    }
+}
+''
+    
+
+
+
+# Задача 5:
+
+''
+using System.Collections.Generic;
+
+public class Program
+[
+    public static List<T> RemoveDuplicates<T>(List<T> sourceList)
+    {
+        HashSet<T> uniqueItems = new HashSet<T>();
+        foreach (T item in sourceList)
+        {
+            uniqueItems.Add(item);
+        }
+        return new List<T>(uniqueItems);
+    }
+    
+
+    public static void Main()
+    {
+        List<int> originalList = new List<int>() { 1, 2, 2, 3, 4, 4, 5 };
+        List<int> uniqueList = RemoveDuplicates(originalList);
+        Console.WriteLine("Исходный список: " + string.Join(", ", originalList));
+        Console.WriteLine("Уникальные элементы: " + string.Join(", ", uniqueList));
+    }
+}
+''
