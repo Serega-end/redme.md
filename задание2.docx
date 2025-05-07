@@ -1,0 +1,109 @@
+### Основы алгоритмизации и программирования
+# Грицинин Сергей ИПО -23.23
+## Задание 2, калькулятор:
+
+''
+using System;
+
+class CalculatorApp
+{
+    public static void Main()
+    {
+        while (true)
+        {
+            ShowMenu();
+            string operationChoice = GetUserInput("Введите символ операции (+,-,*,/,%,++,--)");
+            
+            if (!IsValidOperation(operationChoice))
+            {
+                Console.WriteLine("Некорректная операция. Попробуйте снова!");
+                continue;
+            }
+
+            decimal num1 = GetNumberFromUser("Первое число");
+            decimal result;
+            if (operationChoice.Equals("++") || operationChoice.Equals("--"))
+            {
+                result = PerformUnaryOperation(num1, operationChoice);
+                DisplayResult(result);
+                continue;
+            }
+
+            decimal num2 = GetNumberFromUser("Второе число");
+
+            try
+            {
+                result = PerformBinaryOperation(num1, num2, operationChoice);
+                DisplayResult(result);
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+    
+    private static void ShowMenu()
+    {
+        Console.WriteLine("\nПростой калькулятор:");
+        Console.WriteLine("+ : сложение");
+        Console.WriteLine("- : вычитание");
+        Console.WriteLine("* : умножение");
+        Console.WriteLine("/ : деление");
+        Console.WriteLine("% : остаток от деления");
+        Console.WriteLine("++ : инкремент первого числа");
+        Console.WriteLine("-- : декремент первого числа");
+    }
+
+    private static bool IsValidOperation(string op)
+    {
+        return new[] {"+", "-", "*", "/", "%", "++", "--"}.Contains(op);
+    }
+
+    private static decimal GetNumberFromUser(string prompt)
+    {
+        Console.Write($"{prompt}: ");
+        return decimal.Parse(Console.ReadLine());
+    }
+
+    private static string GetUserInput(string message)
+    {
+        Console.Write(message + ": ");
+        return Console.ReadLine().Trim();
+    }
+
+    private static decimal PerformBinaryOperation(decimal a, decimal b, string operation)
+    {
+        switch (operation)
+        {
+            case "+":
+                return a + b;
+            case "-":
+                return a - b;
+            case "*":
+                return a * b;
+            case "/":
+                if (b != 0)
+                    return a / b;
+                else
+                    throw new DivideByZeroException("Деление на ноль невозможно!");
+            case "%":
+                return a % b;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(operation));
+        }
+    }
+
+    private static decimal PerformUnaryOperation(decimal number, string operation)
+    {
+        return operation == "++"
+                   ? ++number
+                   : --number;
+    }
+
+    private static void DisplayResult(decimal result)
+    {
+        Console.WriteLine($"\nРезультат: {result}\n");
+    }
+}
+''
