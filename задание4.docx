@@ -2,8 +2,10 @@
 
 # Грицинин Сергей ИПО - 23.23
 
-##Задание 4:
-Номер 1:
+## Задание 4:
+# Номер 1:
+
+
 ''
 using System;
 
@@ -30,6 +32,87 @@ class BankDepositProgram
         
         // Форматируем вывод для удобочитаемости
         Console.WriteLine($"Итоговая сумма после {monthsCount} месяцев составит: {initialAmount:C}");
+    }
+}
+''
+
+
+
+
+
+
+
+
+# Номер 2:
+
+''
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Чтение исходных данных
+        Console.Write("Введите начальную сумму вклада: ");
+        decimal initialAmount = Convert.ToDecimal(Console.ReadLine());
+        
+        Console.Write("Введите количество месяцев: ");
+        int monthsCount = Convert.ToInt32(Console.ReadLine());
+    
+        // Процентная ставка
+        const decimal interestRate = 0.07m; // 7%
+    
+        // Начальная переменная для итераций
+        int monthCounter = 0;
+    
+        // Расчёт итоговой суммы вклада
+        decimal currentAmount = initialAmount;
+''
+
+
+
+
+
+
+
+
+# Номер 3:
+
+''
+using System;
+
+class Program {
+    static void Main() {
+        int num1 = 0;
+        int num2 = 0;
+        
+        // Бесконечный цикл продолжается до тех пор, пока оба числа не будут допустимыми
+        while (true) {
+            Console.Write("Введите первое число: ");
+            
+            if (!Int32.TryParse(Console.ReadLine(), out num1)) {   // Проверка на валидный ввод
+                Console.WriteLine("Ошибка! Введено некорректное значение.");
+                continue;
+            }
+            
+            Console.Write("Введите второе число: ");
+            
+            if (!Int32.TryParse(Console.ReadLine(), out num2)) {   // Проверка на валидный ввод
+                Console.WriteLine("Ошибка! Введено некорректное значение.");
+                continue;
+            }
+            
+            // Проверяем диапазон обоих чисел
+            if ((num1 >= 0 && num1 <= 10) && (num2 >= 0 && num2 <= 10)) {
+                break; // Оба числа допустимые — выйти из цикла
+            } else {
+                Console.WriteLine("Оба числа должны находиться в диапазоне от 0 до 10 включительно!");
+            }
+        }
+        
+        // Выполняем вычисление результата и выводим его
+        int result = num1 * num2;
+        Console.WriteLine($"Результат умножения: {result}");
     }
 }
 ''
