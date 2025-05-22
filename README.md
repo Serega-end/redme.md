@@ -19,6 +19,7 @@
 **[Ссылка на задание](https://docs.google.com/document/d/1ZnGoLewGhzjDnHyhAIqKXlh8Bbdz8S4hNgxuybi1f8Y/edit?usp=drive_link)**
 <br>
 **[Выполненное задaние 2](https://github.com/Serega-end/redme.md/blob/main/%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B52.docx)**
+___
 <br>
 <br>
 ### Задание 3:
